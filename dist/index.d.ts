@@ -1,0 +1,23 @@
+import email from './email';
+import isCapital from './isCapital';
+import isCapitalOrNumber from './isCapitalOrNumber';
+import isDefined from './isDefined';
+import maxLength from './maxLength';
+import minLength from './minLength';
+import notContain from './notContain';
+import notEmpty from './notEmpty';
+import required from './required';
+import strictLength from './strictLength';
+declare const rules: {
+    email: typeof email;
+    isCapital: typeof isCapital;
+    isCapitalOrNumber: typeof isCapitalOrNumber;
+    isDefined: typeof isDefined;
+    maxLength: typeof maxLength;
+    minLength: typeof minLength;
+    notContain: typeof notContain;
+    notEmpty: typeof notEmpty;
+    required: typeof required;
+    strictLength: typeof strictLength;
+};
+export default rules;
