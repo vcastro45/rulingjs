@@ -10,6 +10,12 @@ Just a simple set of useful functions to check validation rules
 npm i -S rulingjs
 ```
 
+## To Do List
+
+- Translate in multiple languages
+- Automate NPM publication with CI/CD pipeline
+- Add tests
+
 ## Rules
 
 - `email`
