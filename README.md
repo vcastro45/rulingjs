@@ -29,6 +29,10 @@ npm i -S rulingjs
 - `required`
 - `strictLength`
 
+## Thanks
+
+Thanks to [@Vincere1st](https://github.com/Vincere1st) for contributions
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
