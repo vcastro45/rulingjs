@@ -7,8 +7,14 @@
     "allowJs": true,
     "experimentalDecorators": true,
     "declaration": true,
-    "types": [],
-    "moduleResolution": "Node"
+    "strict": true,
+    "moduleResolution": "Node",
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "./node_modules/@types/"
+    ]
   },
   "include": [
     "src/*"
