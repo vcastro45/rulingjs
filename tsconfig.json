@@ -6,6 +6,8 @@
     "target": "esnext",
     "allowJs": true,
     "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "declaration": true,
     "strict": true,
     "moduleResolution": "Node",
