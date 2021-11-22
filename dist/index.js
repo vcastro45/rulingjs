@@ -18,7 +18,7 @@ class RulingInstance {
         const str = this.config.lang[msgName];
         let i = 0;
         for (const param of params) {
-            str.replaceAll(`%${i++}`, `${param}`);
+            str.replace(`%${i++}`, `${param}`);
         }
         return str;
     }

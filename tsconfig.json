@@ -19,7 +19,8 @@
     ]
   },
   "include": [
-    "src/*"
+    "src/*",
+    "src/locale/*"
   ],
   "exclude": [
     "node_modules",
