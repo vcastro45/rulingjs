@@ -1,20 +1,17 @@
 import { RulingConfiguration } from './configuration'
+import en from './locale/en'
 
 class RulingInstance {
-  private translations: { [msgName: string]: string }
-
   constructor (private config: RulingConfiguration = {
-    lang: 'en'
-  }) {
-    this.translations = require(`./locale/${config.lang}.json`)
-  }
+    lang: en
+  }) {}
 
   create (config?: RulingConfiguration) {
     return new RulingInstance(config)
   }
 
   private t (msgName: string, ...params: (string | number)[]) {
-    const str = this.translations[msgName]
+    const str = this.config.lang[msgName]
 
     let i = 0
     for (const param of params) {

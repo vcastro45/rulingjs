@@ -1,17 +1,21 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const en_1 = __importDefault(require("./locale/en"));
 class RulingInstance {
     config;
-    translations;
     constructor(config = {
-        lang: 'en'
+        lang: en_1.default
     }) {
         this.config = config;
-        this.translations = require(`./locale/${config.lang}.json`);
     }
     create(config) {
         return new RulingInstance(config);
     }
     t(msgName, ...params) {
-        const str = this.translations[msgName];
+        const str = this.config.lang[msgName];
         let i = 0;
         for (const param of params) {
             str.replaceAll(`%${i++}`, `${param}`);
@@ -56,4 +60,4 @@ class RulingInstance {
         return (v) => (!v || v.length === len) ? true : (err || this.t('strictLength'));
     }
 }
-export default new RulingInstance();
+exports.default = new RulingInstance();

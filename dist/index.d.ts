@@ -1,7 +1,6 @@
 import { RulingConfiguration } from './configuration';
 declare class RulingInstance {
     private config;
-    private translations;
     constructor(config?: RulingConfiguration);
     create(config?: RulingConfiguration): RulingInstance;
     private t;

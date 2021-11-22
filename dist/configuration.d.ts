@@ -1,4 +1,6 @@
-export declare type Language = 'en' | 'fr';
+export declare type Language = {
+    [msgName: string]: string;
+};
 export interface RulingConfiguration {
     lang: Language;
 }
