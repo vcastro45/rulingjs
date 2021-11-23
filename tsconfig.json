@@ -2,16 +2,25 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "noImplicitAny": true,
-    "module": "esnext",
+    "module": "commonjs",
     "target": "esnext",
     "allowJs": true,
     "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "types": [],
-    "moduleResolution": "Node"
+    "strict": true,
+    "moduleResolution": "Node",
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "./node_modules/@types/"
+    ]
   },
   "include": [
-    "src/*"
+    "src/*",
+    "src/locale/*"
   ],
   "exclude": [
     "node_modules",

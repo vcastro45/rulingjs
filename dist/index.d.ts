@@ -1,23 +1,19 @@
-import email from './email';
-import isCapital from './isCapital';
-import isCapitalOrNumber from './isCapitalOrNumber';
-import isDefined from './isDefined';
-import maxLength from './maxLength';
-import minLength from './minLength';
-import notContain from './notContain';
-import notEmpty from './notEmpty';
-import required from './required';
-import strictLength from './strictLength';
-declare const rules: {
-    email: typeof email;
-    isCapital: typeof isCapital;
-    isCapitalOrNumber: typeof isCapitalOrNumber;
-    isDefined: typeof isDefined;
-    maxLength: typeof maxLength;
-    minLength: typeof minLength;
-    notContain: typeof notContain;
-    notEmpty: typeof notEmpty;
-    required: typeof required;
-    strictLength: typeof strictLength;
-};
-export default rules;
+import { RulingConfiguration } from './configuration';
+declare class RulingInstance {
+    private config;
+    constructor(config?: RulingConfiguration);
+    create(config?: RulingConfiguration): RulingInstance;
+    private t;
+    email(v: any): string | true;
+    isCapitalOrNumber(v: string): string | true;
+    isCapital(v: string): string | true;
+    isDefined(v: any): string | true;
+    maxLength(len: number, err?: string): (v: any) => string | true;
+    minLength(len: number, err?: string): (v: any) => string | true;
+    notContain(forbiddenCharacter: []): (v: string) => string | true;
+    notEmpty(v: any): string | true;
+    required(v: any): string | true;
+    strictLength(len: number, err?: string): (v: any) => string | true;
+}
+declare const _default: RulingInstance;
+export default _default;
