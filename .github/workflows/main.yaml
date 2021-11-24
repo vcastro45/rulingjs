@@ -1,8 +1,9 @@
 name: Continous Integration
-on:
+on: []
   workflow_dispatch:
+  push:
   release:
-    types: [published]
+    types: [prereleased]
 jobs:
   deploy:
     runs-on: ubuntu-latest
