@@ -1,5 +1,5 @@
 name: Continous Integration
-on: []
+on:
   workflow_dispatch:
   push:
   release:
