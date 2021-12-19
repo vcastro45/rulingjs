@@ -1,6 +1,6 @@
 {
   "name": "rulingjs",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Just a simple set of useful functions to check validation rules",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
