@@ -14,33 +14,33 @@ class RulingInstance {
     create(config) {
         return new RulingInstance(config);
     }
-    t(msgName, ...params) {
+    t = (msgName, ...params) => {
         const str = this.config.lang[msgName];
         let i = 0;
         for (const param of params) {
             str.replace(`%${i++}`, `${param}`);
         }
         return str;
-    }
-    email(v) {
+    };
+    email = (v) => {
         return (!v || (typeof v === 'string' && /^.+@\S+\.\S+$/.test(v))) || this.t('email');
-    }
-    isCapitalOrNumber(v) {
+    };
+    isCapitalOrNumber = (v) => {
         return (/^[A-Z\d]*$/.test(v)) || this.t('isCapitalOrNumber');
-    }
-    isCapital(v) {
+    };
+    isCapital = (v) => {
         return (/^[A-Z]*$/.test(v)) || this.t('isCapital');
-    }
-    isDefined(v) {
+    };
+    isDefined = (v) => {
         return (v !== undefined && v !== null) || this.t('required');
-    }
-    maxLength(len, err) {
+    };
+    maxLength = (len, err) => {
         return (v) => (!v || v.length <= len) ? true : (err || this.t('maxLength', len));
-    }
-    minLength(len, err) {
+    };
+    minLength = (len, err) => {
         return (v) => (!v || v.length >= len) ? true : (err || this.t('minLength', len));
-    }
-    notContain(forbiddenCharacter) {
+    };
+    notContain = (forbiddenCharacter) => {
         return (v) => {
             let error = true;
             for (const character of forbiddenCharacter) {
@@ -49,15 +49,15 @@ class RulingInstance {
             }
             return error;
         };
-    }
-    notEmpty(v) {
+    };
+    notEmpty = (v) => {
         return (v && v.length > 0) ? true : this.t('notEmpty');
-    }
-    required(v) {
+    };
+    required = (v) => {
         return !!v || this.t('required');
-    }
-    strictLength(len, err) {
+    };
+    strictLength = (len, err) => {
         return (v) => (!v || v.length === len) ? true : (err || this.t('strictLength'));
-    }
+    };
 }
 exports.default = new RulingInstance();
