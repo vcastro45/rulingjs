@@ -8,5 +8,6 @@ declare const _default: {
     notEmpty: string;
     required: string;
     strictLength: string;
+    pattern: string;
 };
 export default _default;

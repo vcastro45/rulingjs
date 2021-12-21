@@ -241,4 +241,33 @@ describe('RulingJS rules tests', () => {
       ).to.be.a('string')
     })
   })
+
+  describe('#pattern', () => {
+    const emailRe = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const emailPattern = ruling.pattern(emailRe)
+
+    it('should be a valid email', function () {
+      expect(
+        emailPattern('my-email@gmail.com')
+      ).to.equal(true)
+    })
+
+    it('should return an error message', function () {
+      expect(
+        emailPattern('my-email@gmail')
+      ).to.be.a('string')
+
+      expect(
+        emailPattern('@gmail.com')
+      ).to.be.a('string')
+
+      expect(
+        emailPattern('.@gmail.com')
+      ).to.be.a('string')
+
+      expect(
+        emailPattern('my-email@@gmail.com')
+      ).to.be.a('string')
+    })
+  })
 })

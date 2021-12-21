@@ -69,6 +69,10 @@ class RulingInstance {
   strictLength = (len: number, err?: string) => {
     return (v: any) => (!v || v.length === len) ? true : (err || this.t('strictLength'))
   }
+
+  pattern = (pattern: RegExp, err?: string) => {
+    return (v: any) => (!v || pattern.test(v) ? true : (err || this.t('pattern')))
+  }
 }
 
 export default new RulingInstance()
