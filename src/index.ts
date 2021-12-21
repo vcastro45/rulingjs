@@ -2,15 +2,19 @@ import { RulingConfiguration } from './configuration'
 import en from './locale/en'
 
 class RulingInstance {
-  constructor (private config: RulingConfiguration = {
+  private config: RulingConfiguration
+
+  constructor (config: RulingConfiguration = {
     lang: en
-  }) {}
+  }) {
+    this.config = config
+  }
 
   create (config?: RulingConfiguration) {
     return new RulingInstance(config)
   }
 
-  private t (msgName: string, ...params: (string | number)[]) {
+  t = (msgName: string, ...params: (string | number)[]) => {
     const str = this.config.lang[msgName]
 
     let i = 0
@@ -20,31 +24,31 @@ class RulingInstance {
     return str
   }
 
-  email (v: any) {
+  email = (v: any) => {
     return (!v || (typeof v === 'string' && /^.+@\S+\.\S+$/.test(v))) || this.t('email')
   }
 
-  isCapitalOrNumber (v: string) {
+  isCapitalOrNumber = (v: string) => {
     return (/^[A-Z\d]*$/.test(v)) || this.t('isCapitalOrNumber')
   }
 
-  isCapital (v: string) {
+  isCapital = (v: string) => {
     return (/^[A-Z]*$/.test(v)) || this.t('isCapital')
   }
 
-  isDefined (v: any) {
+  isDefined = (v: any) => {
     return (v !== undefined && v !== null) || this.t('required')
   }
 
-  maxLength (len: number, err?: string) {
+  maxLength = (len: number, err?: string) => {
     return (v: any) => (!v || v.length <= len) ? true : (err || this.t('maxLength', len))
   }
 
-  minLength (len: number, err?: string) {
+  minLength = (len: number, err?: string) => {
     return (v: any) => (!v || v.length >= len) ? true : (err || this.t('minLength', len))
   }
 
-  notContain (forbiddenCharacter: []) {
+  notContain = (forbiddenCharacter: []) => {
     return (v: string) => {
       let error: string | boolean = true
       for (const character of forbiddenCharacter) {
@@ -54,18 +58,21 @@ class RulingInstance {
     }
   }
 
-  notEmpty (v: any) {
+  notEmpty = (v: any) => {
     return (v && v.length > 0) ? true : this.t('notEmpty')
   }
 
-  required (v: any) {
+  required = (v: any) => {
     return !!v || this.t('required')
   }
 
-  strictLength (len: number, err?: string) {
+  strictLength = (len: number, err?: string) => {
     return (v: any) => (!v || v.length === len) ? true : (err || this.t('strictLength'))
   }
 
+  pattern = (pattern: RegExp, err?: string) => {
+    return (v: any) => (!v || pattern.test(v) ? true : (err || this.t('pattern')))
+  }
 }
 
 export default new RulingInstance()

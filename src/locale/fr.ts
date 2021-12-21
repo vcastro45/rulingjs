@@ -7,5 +7,6 @@ export default {
   notContain: 'Le caractère %0 n\'est pas autorisé',
   notEmpty: 'Veuillez choisir au moins une valeur',
   required: 'Ce champ est obligatoire',
-  strictLength: 'La longueur du champ saisie est invalide'
+  strictLength: 'La longueur du champ saisie est invalide',
+  pattern: 'Format invalide'
 }

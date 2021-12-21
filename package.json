@@ -1,13 +1,13 @@
 {
   "name": "rulingjs",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "Just a simple set of useful functions to check validation rules",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
     "start": "node dist/index.js",
     "test": "mocha test/**/*.spec.js",
-    "prepare": "tsc && npm test"
+    "prepare": "tsc"
   },
   "repository": {
     "type": "git",

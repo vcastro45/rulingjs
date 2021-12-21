@@ -9,5 +9,6 @@ exports.default = {
     notContain: 'The %0 character is not allowed',
     notEmpty: 'Please choose at least one value',
     required: 'This field is required',
-    strictLength: 'The length of the entered field is invalid'
+    strictLength: 'The length of the entered field is invalid',
+    pattern: 'Invalid format'
 };
