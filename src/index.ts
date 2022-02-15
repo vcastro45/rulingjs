@@ -15,11 +15,11 @@ class RulingInstance {
   }
 
   t = (msgName: string, ...params: (string | number)[]) => {
-    const str = this.config.lang[msgName]
+    let str = this.config.lang[msgName]
 
     let i = 0
     for (const param of params) {
-      str.replace(`%${i++}`, `${param}`)
+      str = str.replace(`%${i++}`, `${param}`)
     }
     return str
   }
