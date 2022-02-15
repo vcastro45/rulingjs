@@ -28,6 +28,7 @@ npm i -S rulingjs
 - `notEmpty`
 - `required`
 - `strictLength`
+- `pattern`
 
 ## Thanks
 

@@ -137,6 +137,11 @@ describe('RulingJS rules tests', () => {
         ruling.minLength(6)('Hello')
       ).to.be.a('string')
     })
+    it('should return a dynamic error message', function () {
+      expect(
+        ruling.minLength(6)('Hello')
+      ).to.equal('You must enter a minimum of 6 character(s)')
+    })
   })
 
   describe('#notContain', () => {
