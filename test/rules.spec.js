@@ -140,7 +140,7 @@ describe('RulingJS rules tests', () => {
     it('should return a dynamic error message', function () {
       expect(
         ruling.minLength(6)('Hello')
-      ).to.equal('You must enter a minimum of 6 character(s)')
+      ).to.equal('You must enter a minimum of 6 characters')
     })
   })
 
