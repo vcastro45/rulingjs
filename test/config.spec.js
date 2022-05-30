@@ -5,7 +5,7 @@ import fr from '../dist/locale/fr.js'
 
 describe('RulingJS config tests', () => {
   it('should return default message', function () {
-    const result = ruling.required(null)
+    const result = ruling.required()(null)
     expect(result).to.be.equal('This field is required')
   })
 
@@ -13,7 +13,7 @@ describe('RulingJS config tests', () => {
     const rulingFr = ruling.create({
       lang: fr
     })
-    const result = rulingFr.required(null)
+    const result = rulingFr.required()(null)
     expect(result).to.be.equal('Ce champ est obligatoire')
   })
 })

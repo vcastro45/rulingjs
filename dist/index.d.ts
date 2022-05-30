@@ -4,15 +4,15 @@ declare class RulingInstance {
     constructor(config?: RulingConfiguration);
     create(config?: RulingConfiguration): RulingInstance;
     t: (msgName: string, ...params: (string | number)[]) => string;
-    email: (v: any) => string | true;
-    isCapitalOrNumber: (v: string) => string | true;
-    isCapital: (v: string) => string | true;
-    isDefined: (v: any) => string | true;
+    email: (err?: string | undefined) => (v: any) => string | true;
+    isCapitalOrNumber: (err?: string | undefined) => (v: string) => string | true;
+    isCapital: (err?: string | undefined) => (v: string) => string | true;
+    isDefined: (err?: string | undefined) => (v: any) => string | true;
     maxLength: (len: number, err?: string | undefined) => (v: any) => string | true;
     minLength: (len: number, err?: string | undefined) => (v: any) => string | true;
-    notContain: (forbiddenCharacter: []) => (v: string) => string | true;
-    notEmpty: (v: any) => string | true;
-    required: (v: any) => string | true;
+    notContain: (forbiddenCharacters: [], err?: string | undefined) => (v: string) => string | true;
+    notEmpty: (err?: string | undefined) => (v: any) => string | true;
+    required: (err?: string | undefined) => (v: any) => string | true;
     strictLength: (len: number, err?: string | undefined) => (v: any) => string | true;
     pattern: (pattern: RegExp, err?: string | undefined) => (v: any) => string | true;
 }

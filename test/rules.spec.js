@@ -5,88 +5,106 @@ import 'mocha'
 describe('RulingJS rules tests', () => {
   describe('#Email', () => {
     it('Well formatted email', function () {
-      const result = ruling.email('well.formatted@email.com')
+      const result = ruling.email()('well.formatted@email.com')
       expect(result).to.equal(true)
     })
 
     it('Not well formatted email', function () {
-      const result = ruling.email('stupid@email')
+      const result = ruling.email()('stupid@email')
       expect(result).to.be.a('string')
+    })
+
+    it('should return a custom error message', function () {
+      expect(
+        ruling.email('A custom error message')('stupid@email')
+      ).to.be.equal('A custom error message')
     })
   })
 
   describe('#isCapitalOrNumber', () => {
     it('should be capitals or numbers', function () {
       expect(
-        ruling.isCapitalOrNumber('ABC123')
+        ruling.isCapitalOrNumber()('ABC123')
       ).to.equal(true)
 
       expect(
-        ruling.isCapitalOrNumber('ABC123')
+        ruling.isCapitalOrNumber()('ABC123')
       ).to.equal(true)
 
       expect(
-        ruling.isCapitalOrNumber('456ABC')
+        ruling.isCapitalOrNumber()('456ABC')
       ).to.equal(true)
 
       expect(
-        ruling.isCapitalOrNumber('A1B2C3')
+        ruling.isCapitalOrNumber()('A1B2C3')
       ).to.equal(true)
     })
 
     it('should return an error message', function () {
       expect(
-        ruling.isCapitalOrNumber('A1B 2C3')
+        ruling.isCapitalOrNumber()('A1B 2C3')
       ).to.be.a('string')
 
       expect(
-        ruling.isCapitalOrNumber('A1B2c3')
+        ruling.isCapitalOrNumber()('A1B2c3')
       ).to.be.a('string')
 
       expect(
-        ruling.isCapitalOrNumber('abc')
+        ruling.isCapitalOrNumber()('abc')
       ).to.be.a('string')
 
       expect(
-        ruling.isCapitalOrNumber('abc123')
+        ruling.isCapitalOrNumber()('abc123')
       ).to.be.a('string')
+    })
+
+    it('should return a custom error message', function () {
+      expect(
+        ruling.isCapitalOrNumber('A custom error message')('abc123')
+      ).to.be.equal('A custom error message')
     })
   })
 
   describe('#isCapital', () => {
     it('should be capitals', function () {
       expect(
-        ruling.isCapital('ABC')
+        ruling.isCapital()('ABC')
       ).to.equal(true)
     })
 
     it('should return an error message', function () {
       expect(
-        ruling.isCapital('ABC123')
+        ruling.isCapital()('ABC123')
       ).to.be.a('string')
 
       expect(
-        ruling.isCapital('AB C')
+        ruling.isCapital()('AB C')
       ).to.be.a('string')
 
       expect(
-        ruling.isCapital('abc')
+        ruling.isCapital()('abc')
       ).to.be.a('string')
 
       expect(
-        ruling.isCapital('abc123')
+        ruling.isCapital()('abc123')
       ).to.be.a('string')
+    })
+
+    it('should return a custom error message', function () {
+      expect(
+        ruling.isCapital('A custom error message')('abc123')
+      ).to.be.equal('A custom error message')
     })
   })
 
   describe('#isDefined', () => {
     it('should be defined', function () {
       expect(
-        ruling.isDefined('it is defined')
+        ruling.isDefined()('it is defined')
       ).to.equal(true)
 
       expect(
-        ruling.isDefined({
+        ruling.isDefined()({
           prop: 'is defined'
         })
       ).to.equal(true)
@@ -94,12 +112,18 @@ describe('RulingJS rules tests', () => {
 
     it('should return an error message', function () {
       expect(
-        ruling.isDefined(undefined)
+        ruling.isDefined()(undefined)
       ).to.be.a('string')
 
       expect(
-        ruling.isDefined(null)
+        ruling.isDefined()(null)
       ).to.be.a('string')
+    })
+
+    it('should return a custom error message', function () {
+      expect(
+        ruling.isDefined('A custom error message')(null)
+      ).to.be.equal('A custom error message')
     })
   })
 
@@ -119,6 +143,12 @@ describe('RulingJS rules tests', () => {
         ruling.maxLength(4)('Hello')
       ).to.be.a('string')
     })
+
+    it('should return a custom error message', function () {
+      expect(
+        ruling.maxLength(4, 'A custom error message')('Hello')
+      ).to.be.equal('A custom error message')
+    })
   })
 
   describe('#minLength', () => {
@@ -137,10 +167,17 @@ describe('RulingJS rules tests', () => {
         ruling.minLength(6)('Hello')
       ).to.be.a('string')
     })
+
     it('should return a dynamic error message', function () {
       expect(
         ruling.minLength(6)('Hello')
       ).to.equal('You must enter a minimum of 6 characters')
+    })
+
+    it('should return a custom error message', function () {
+      expect(
+        ruling.minLength(6, 'A custom error message')('Hello')
+      ).to.be.equal('A custom error message')
     })
   })
 
@@ -168,64 +205,82 @@ describe('RulingJS rules tests', () => {
         ruling.notContain(['d', 'e'])('Hello world')
       ).to.be.a('string')
     })
+
+    it('should return a custom error message', function () {
+      expect(
+        ruling.notContain(['d', 'e'], 'A custom error message')('Hello world')
+      ).to.be.equal('A custom error message')
+    })
   })
 
   describe('#notEmpty', () => {
     it('should be filled', function () {
       expect(
-        ruling.notEmpty('Hello world')
+        ruling.notEmpty()('Hello world')
       ).to.equal(true)
 
       expect(
-        ruling.notEmpty([
+        ruling.notEmpty()([
           'hello',
           'world'
         ])
       ).to.equal(true)
 
       expect(
-        ruling.notEmpty([null])
+        ruling.notEmpty()([null])
       ).to.equal(true)
 
       expect(
-        ruling.notEmpty([undefined])
+        ruling.notEmpty()([undefined])
       ).to.equal(true)
     })
 
     it('should return an error message', function () {
       expect(
-        ruling.notEmpty('')
+        ruling.notEmpty()('')
       ).to.be.a('string')
 
       expect(
-        ruling.notEmpty([])
+        ruling.notEmpty()([])
       ).to.be.a('string')
+    })
+
+    it('should return a custom error message', function () {
+      expect(
+        ruling.notEmpty('A custom error message')([])
+      ).to.be.equal('A custom error message')
     })
   })
 
   describe('#required', () => {
     it('should be defined and filled', function () {
       expect(
-        ruling.required('Hello world')
+        ruling.required()('Hello world')
       ).to.equal(true)
     })
 
     it('should return an error message', function () {
       expect(
-        ruling.required('')
+        ruling.required()('')
       ).to.be.a('string')
 
       expect(
-        ruling.required(null)
+        ruling.required()(null)
       ).to.be.a('string')
 
       expect(
-        ruling.required(undefined)
+        ruling.required()(undefined)
       ).to.be.a('string')
 
       expect(
-        ruling.required(0)
+        ruling.required()(0)
       ).to.be.a('string')
+    })
+
+    it('should return a custom error message', function () {
+      expect(
+        ruling.required('A custom error message')(undefined)
+      ).to.be.equal('A custom error message')
     })
   })
 
@@ -244,6 +299,12 @@ describe('RulingJS rules tests', () => {
       expect(
         ruling.strictLength(6)('Hello')
       ).to.be.a('string')
+    })
+
+    it('should return a custom error message', function () {
+      expect(
+        ruling.strictLength(6, 'A custom error message')('Hello')
+      ).to.be.equal('A custom error message')
     })
   })
 
@@ -273,6 +334,12 @@ describe('RulingJS rules tests', () => {
       expect(
         emailPattern('my-email@@gmail.com')
       ).to.be.a('string')
+    })
+
+    it('should return a custom error message', function () {
+      expect(
+        ruling.pattern(emailRe, 'A custom error message')('my-email@@gmail.com')
+      ).to.be.equal('A custom error message')
     })
   })
 })
