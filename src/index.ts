@@ -24,20 +24,20 @@ class RulingInstance {
     return str
   }
 
-  email = (v: any) => {
-    return (!v || (typeof v === 'string' && /^.+@\S+\.\S+$/.test(v))) || this.t('email')
+  email = (err?: string) => {
+    return (v: any) => (!v || (typeof v === 'string' && /^.+@\S+\.\S+$/.test(v))) || (err || this.t('email'))
   }
 
-  isCapitalOrNumber = (v: string) => {
-    return (/^[A-Z\d]*$/.test(v)) || this.t('isCapitalOrNumber')
+  isCapitalOrNumber = (err?: string) => {
+    return (v: string) => (/^[A-Z\d]*$/.test(v)) || (err || this.t('isCapitalOrNumber'))
   }
 
-  isCapital = (v: string) => {
-    return (/^[A-Z]*$/.test(v)) || this.t('isCapital')
+  isCapital = (err?: string) => {
+    return (v: string) => (/^[A-Z]*$/.test(v)) || (err || this.t('isCapital'))
   }
 
-  isDefined = (v: any) => {
-    return (v !== undefined && v !== null) || this.t('required')
+  isDefined = (err?: string) => {
+    return (v: any) => (v !== undefined && v !== null) || (err || this.t('required'))
   }
 
   maxLength = (len: number, err?: string) => {
@@ -48,22 +48,22 @@ class RulingInstance {
     return (v: any) => (!v || v.length >= len) ? true : (err || this.t('minLength', len))
   }
 
-  notContain = (forbiddenCharacter: []) => {
+  notContain = (forbiddenCharacters: [], err?: string) => {
     return (v: string) => {
       let error: string | boolean = true
-      for (const character of forbiddenCharacter) {
-        if (v.includes(character)) error = this.t('notContain', character)
+      for (const character of forbiddenCharacters) {
+        if (v.includes(character)) error = err || this.t('notContain', character)
       }
       return error
     }
   }
 
-  notEmpty = (v: any) => {
-    return (v && v.length > 0) ? true : this.t('notEmpty')
+  notEmpty = (err?: string) => {
+    return (v: any) => (v && v.length > 0) ? true : (err || this.t('notEmpty'))
   }
 
-  required = (v: any) => {
-    return !!v || this.t('required')
+  required = (err?: string) => {
+    return (v: any) => !!v || (err || this.t('required'))
   }
 
   strictLength = (len: number, err?: string) => {

@@ -22,17 +22,17 @@ class RulingInstance {
         }
         return str;
     };
-    email = (v) => {
-        return (!v || (typeof v === 'string' && /^.+@\S+\.\S+$/.test(v))) || this.t('email');
+    email = (err) => {
+        return (v) => (!v || (typeof v === 'string' && /^.+@\S+\.\S+$/.test(v))) || (err || this.t('email'));
     };
-    isCapitalOrNumber = (v) => {
-        return (/^[A-Z\d]*$/.test(v)) || this.t('isCapitalOrNumber');
+    isCapitalOrNumber = (err) => {
+        return (v) => (/^[A-Z\d]*$/.test(v)) || (err || this.t('isCapitalOrNumber'));
     };
-    isCapital = (v) => {
-        return (/^[A-Z]*$/.test(v)) || this.t('isCapital');
+    isCapital = (err) => {
+        return (v) => (/^[A-Z]*$/.test(v)) || (err || this.t('isCapital'));
     };
-    isDefined = (v) => {
-        return (v !== undefined && v !== null) || this.t('required');
+    isDefined = (err) => {
+        return (v) => (v !== undefined && v !== null) || (err || this.t('required'));
     };
     maxLength = (len, err) => {
         return (v) => (!v || v.length <= len) ? true : (err || this.t('maxLength', len));
@@ -40,21 +40,21 @@ class RulingInstance {
     minLength = (len, err) => {
         return (v) => (!v || v.length >= len) ? true : (err || this.t('minLength', len));
     };
-    notContain = (forbiddenCharacter) => {
+    notContain = (forbiddenCharacters, err) => {
         return (v) => {
             let error = true;
-            for (const character of forbiddenCharacter) {
+            for (const character of forbiddenCharacters) {
                 if (v.includes(character))
-                    error = this.t('notContain', character);
+                    error = err || this.t('notContain', character);
             }
             return error;
         };
     };
-    notEmpty = (v) => {
-        return (v && v.length > 0) ? true : this.t('notEmpty');
+    notEmpty = (err) => {
+        return (v) => (v && v.length > 0) ? true : (err || this.t('notEmpty'));
     };
-    required = (v) => {
-        return !!v || this.t('required');
+    required = (err) => {
+        return (v) => !!v || (err || this.t('required'));
     };
     strictLength = (len, err) => {
         return (v) => (!v || v.length === len) ? true : (err || this.t('strictLength'));
