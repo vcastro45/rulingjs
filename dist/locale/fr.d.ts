@@ -1,5 +1,7 @@
 declare const _default: {
     email: string;
+    isNumber: string;
+    isInteger: string;
     isCapitalOrNumber: string;
     isCapital: string;
     maxLength: string;

@@ -28,6 +28,14 @@ class RulingInstance {
     return (v: any) => (!v || (typeof v === 'string' && /^.+@\S+\.\S+$/.test(v))) || (err || this.t('email'))
   }
 
+  isNumber = (err?: string) => {
+    return (v: string) => !!+v || (err || this.t('isNumber'))
+  }
+
+  isInteger = (err?: string) => {
+    return (v: string) => (/^[\d]*$/.test(v)) || (err || this.t('isInteger'))
+  }
+
   isCapitalOrNumber = (err?: string) => {
     return (v: string) => (/^[A-Z\d]*$/.test(v)) || (err || this.t('isCapitalOrNumber'))
   }

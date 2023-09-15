@@ -50,57 +50,67 @@ Use a rule with Vuetify
 ## Rules
 
 ### `email`
-```
+```typescript
 ruling.email(customErrorMessage?: string)
 ```
 
 ### `isCapital`
-```
+```typescript
 ruling.isCapital(customErrorMessage?: string)
 ```
 
-### `isCapitalOrNumber`
+### `isNumber`
+```typescript
+ruling.isNumber(customErrorMessage?: string)
 ```
+
+### `isInteger`
+```typescript
+ruling.isInteger(customErrorMessage?: string)
+```
+
+### `isCapitalOrNumber`
+```typescript
 ruling.isCapitalOrNumber(customErrorMessage?: string)
 ```
 
 ### `isDefined`
-```
+```typescript
 ruling.isDefined(customErrorMessage?: string)
 ```
 
 ### `maxLength`
-```
+```typescript
 ruling.maxLength(len: number, customErrorMessage?: string)
 ```
 
 ### `minLength`
-```
+```typescript
 ruling.minLength(len: number, customErrorMessage?: string)
 ```
 
 ### `NotContain`
-```
+```typescript
 ruling.NotContain(forbiddenCharacters: string[], customErrorMessage?: string)
 ```
 
 ### `notEmpty`
-```
+```typescript
 ruling.notEmpty(customErrorMessage?: string)
 ```
 
 ### `required`
-```
+```typescript
 ruling.required(customErrorMessage?: string)
 ```
 
 ### `strictLength`
-```
+```typescript
 ruling.strictLength(len: number, customErrorMessage?: string)
 ```
 
 ### `pattern`
-```
+```typescript
 ruling.pattern(pattern: RegExp, customErrorMessage?: string)
 ```
 
