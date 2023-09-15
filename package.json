@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "test": "mocha test/**/*.spec.js",
-    "prepare": "tsc"
+    "prepare": "NODE_ENV=production tsc"
   },
   "repository": {
     "type": "git",

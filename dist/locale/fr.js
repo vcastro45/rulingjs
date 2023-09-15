@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     email: 'Veuillez saisir un E-mail valide',
+    isNumber: 'Ce champs ne peut contenir que des chiffres',
+    isInteger: 'Ce champs ne peut contenir que des nombres entiers',
     isCapitalOrNumber: 'Ce champs ne peut contenir que des majuscules ou des chiffres',
     isCapital: 'Ce champs ne peut contenir que des majuscules',
     maxLength: 'Vous devez saisir %0 caractères maximum',

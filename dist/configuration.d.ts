@@ -1,4 +1,4 @@
-export declare type Language = {
+export type Language = {
     [msgName: string]: string;
 };
 export interface RulingConfiguration {
